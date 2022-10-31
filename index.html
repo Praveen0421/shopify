@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -19,13 +21,16 @@
             clifford: '#da373d',
             hero: '#FBF7ED',
             herotext: '#004C3F',
+            darkgreen: '#002E25',
             dane: '#1f1f1fb2',
             dane2: '#1f1f1f02',
             paratext: '#747177',
             btn: '#008060',
             icon: '#C1F0D0',
             lightgreen: '#F3FCF4',
-            navtext: '#333'
+            navtext: '#333',
+            footerline: '#d2d5d91a',
+            lightwhite: '#e8eaecb0'
           },
           height: {
 
@@ -39,6 +44,7 @@
             'laptop': '1071px',
             'laptopX': '1162px',
             'laptopXL': '1280px',
+            'laptopXXL': '1365px',
             'desktop': '1480px',
           },
           fontSize: {
@@ -77,14 +83,25 @@
               '0 35px 35px rgba(0, 0, 0, 0.25)',
               '0 45px 65px rgba(0, 0, 0, 0.15)'
             ]
+          },
+          lineHeight: {
+            'extra-loose': '2.5',
+            '12': '3.5rem',
+          },
+          backgroundSize: {
+            '20': ['700px',]
+          },
+          rotate: {
+            '90': '-90deg',
           }
         }
       }
     }
+
   </script>
 </head>
 
-<body>
+<body onload="onloadStart()">
   <section class="desktop:px-12">
     <nav class="sticky z-20 top-0 mobile:flex justify-between bg-white py-5">
       <div class="relative mobile:ml-10 laptop:ml-24 mobile:flex items-center">
@@ -117,12 +134,12 @@
 
     <!-- hero section -->
     <section
-      class="relative mobile:flex mobile:flex-col mobile:justify-center mobile:items-center laptop:items-start laptop:flex-row  laptop:justify-between bg-hero mobile:pt-20 laptop:pt-0 overflow-x-hidden">
+      class="relative mobile:flex mobile:flex-col mobile:justify-center mobile:items-center laptop:items-start laptop:flex-row  laptop:justify-between bg-hero mobile:pt-20  overflow-x-hidden">
       <div
-        class="relative tabletX:mr-60 flex flex-col laptop:justify-center mobile:w-full tabletX:w-auto mr-5 mobile:pt-5 tabletX:pt-16">
-        <div class="  relative mobile:ml-10 laptop:left-16 pr-0 ">
+        class="relative tabletX:mr-60  laptop:mr-0 flex flex-col laptop:justify-center mobile:w-full tabletX:w-auto laptop:w-1/2 mr-5 mobile:pt-5 tabletX:pt-16">
+        <div class="  relative mobile:ml-10 laptop:left-16  ">
           <h1 class=" mobile:text-3xl laptop:text-5xl font-bold text-herotext leading-snug laptop:pr-40 w-fit">
-            The easiest way to sell<br> online in India
+            The easiest way to sell<br class="mobile:hidden mobileX:block"> online in India
           </h1>
           <p class="text-xl text-paratext pt-7 pb-7 laptop:pr-40 w-fit">
             Try one of the most powerful platforms on the market for free. No<br class="mobile:hidden tablet:block">
@@ -149,8 +166,8 @@
       </div>
 
       <div
-        class=" flex relative mobile:items-center justify-center laptop:h-59 laptop:w-49 mobile:w-full bg-hero laptop:overflow-x-hidden laptop:overflow-y-hidden ">
-        <img class="relative laptop:left-14 mobile:w-99 mobile:h laptop:w-98 laptop:h-98"
+        class="laptop:w-1/2 flex relative mobile:items-center justify-center laptop:h-59 laptop:w-49 mobile:w-full bg-hero  laptop:overflow-x-hidden laptop:overflow-y-hidden ">
+        <img class="relative laptop:left-14 mobile:w-99  laptop:w-98 laptop:h-98"
           src="img/in-hero-product-large-bce22ad495460b9f4ecb3ba9ae001c159106992815d73339fd27436dd16dcf4c.png" alt="">
         <div
           class="absolute laptop:left-14  laptop:w-98 mobile:w-full h-48 bottom-0 bg-gradient-to-t from-dane to-dane2 ">
@@ -206,8 +223,8 @@
                 <span class="hover:underline underline-offset-2">ELECTRONICS</span><br><span class="">Crossbeats</span>
               </p>
             </div>
-            <div class="tabletX:px-5 mobile:block tabletX:hidden tableXL:block "><img
-                class="mobile:h-41 tabletX:h-96 mobile:mx-7 tabletX:mx-0 mobile:pr-7 tabletX:pr-0  "
+            <div class="tabletX:px-5 tabletX:hidden tabletXL:block  "><img
+                class="mobile:h-41 tabletX:h-96   mobile:mx-7 tabletX:mx-0 mobile:pr-7 tabletX:pr-0  "
                 src="img/home-example-large-75bdc7686a50198c0ae2134cb882293b96b5308386a8d7a42fbf8bd0f70f4750.jpg"
                 alt="">
               <p class="mobile:text-sm tabletX:text-lg font-medium pt-2 mobile:mx-7 tabletX:mx-0 ">
@@ -281,19 +298,24 @@
       </div>
       <div class="flex flex-col items-center justify-center ">
         <div
-          class="flex items-center justify-around mobile:flex-col-reverse laptop:flex-row  w-full laptop:px-40 tabletX:px-20 tabletX:pt-24 laptop:pt-0">
-          <div class="relative laptop:right-12 flex flex-col justify-center items-center ">
-            <video autoplay loop class="laptop:h-47 tabletX:h-59">
+          class="flex items-center justify-around mobile:flex-col-reverse laptop:flex-row  w-full laptop:px-40 tabletX:px-20 ">
+          <div class="relative laptop:right-12 flex flex-col justify-center items-center w-fit bg-white">
+
+            <video autoplay loop id="myVideo" class="laptop:h-47 tabletX:h-59">
               <source
-                src="img/sell-animation-desktop-1b186d853b04bce6dbc12bb63bd5bc4bc1ff60cd1a06fd12f85261c8acc66d0a.webm"
+                src="img/sell-animation-desktop-e91e64db2d38816861b2eb3243eb9d8b28225f47269954d9f257cc850bb2f33a.mp4"
                 type="video/mp4">
               <source
                 src="img/sell-animation-desktop-1b186d853b04bce6dbc12bb63bd5bc4bc1ff60cd1a06fd12f85261c8acc66d0a.ogg"
                 type="video/ogg">
               Your browser does not support the video tag.
             </video>
-            <i class="fa-solid fa-play  mobile:absolute right-0 laptop:bottom-20 tabletX:bottom-14"></i>
+            <i onclick="playVid()" id="btn1"
+              class="fa-solid fa-play hidden mobile:absolute right-0 laptop:bottom-20 tabletX:bottom-14 text-2xl"></i>
+            <i onclick="pauseVid()" id="btn2"
+              class="fa-regular fa-circle-pause  mobile:absolute right-0 laptop:bottom-20 tabletX:bottom-14 text-2xl"></i>
           </div>
+
           <div class=" mobile:pb-10 laptop:pb-0 ">
             <h2 class="laptop:text-3xl mobile:text-2xl">Sell everywhere</h2>
             <p class="laptop:text-lg mobile:text-base p4-4 text-paratext">Use one platform to sell products to anyone,
@@ -379,8 +401,9 @@
 
     <section class="mobile:px-10 tabletXL:px-20 ">
       <div class="relative laptopX:pl-28">
-        <h1 class="mobile:text-xl mobileX:text-2xl tabletXL:text-3xl pt-14">Empowering independent business<br
-            class="mobile:hidden laptopX:block">owners
+        <h1 class="mobile:font-medium mobileX:font-normal mobile:text-xl mobileX:text-2xl tabletXL:text-3xl pt-14">
+          Empowering independent
+          business<br class="mobile:hidden laptopX:block">owners
           everywhere</h1>
         <p class=" tablet:text-xl mobileX:text-2xl pt-8">Millions of businesses in <span class="font-semibold">175
             countries</span>
@@ -398,38 +421,290 @@
         <img src="img/map-fallback-large-4b38a92342c7101ac96f845270a46ea780ebbe755520e628012f6c969da308c7.png" alt="">
       </div>
     </section>
-    <section>
-      <div class="flex">
-        <div class="h-61 w-49">
-          <img
+
+
+    <!--  ******* -->
+
+
+    <section class=" py-20">
+      <div
+        class="flex mobile:flex-col tabletX:flex-row  justify-center bg-darkgreen mobile:mx-5 tabletX:mx-12 laptop:mx-20 grow ">
+        <div
+          class="relative mobile:w-full tabletX:w-1/2  mobile:h-21 tabletX:h-auto  bg-center  mobile:bg-[url('img/alicia-souza-testimonial@tablet-2x-bbaaa57e31fac90eaf6d71be0d076018bd4390eda8a5981e85538b1db715b193.jpg')]   mobile:bg-cover      tabletX:hidden:bg-center-1     tabletX:hidden:bg-[url('img/alicia-souza-testimonial@tablet-2x-bbaaa57e31fac90eaf6d71be0d076018bd4390eda8a5981e85538b1db715b193.jpg')]   tabletX:hidden:bg-cover ">
+          <img class="h-full mobile:hidden tabletX:block"
             src="img/alicia-souza-testimonial@tablet-2x-bbaaa57e31fac90eaf6d71be0d076018bd4390eda8a5981e85538b1db715b193.jpg"
             alt="">
         </div>
-        <div class="flex flex-col justify-center items-center">
-          <p>“Shopify was my knight in shining<br> armor when I exhausted every<br>
-            other possibility of getting my<br> online store up and running. It was<br>
-            stunningly easy to use, with more<br> features and plug-ins that I didn’t<br> even know
+        <div class="relative flex flex-col  items-center  tabletX:w-1/2  ">
+          <p
+            class="mobile:text-xl laptop:text-3xl text-white text-center pt-16 font-semibold mobile:px-10 tabletX:px-20  laptop:px-20 leading-relaxed">
+            “Shopify was my knight
+            in shining<br class="mobile:hidden laptopXXL:block"> armor
+            when I exhausted
+            every<br class="mobile:hidden laptopXXL:block">
+            other possibility of getting my<br class="mobile:hidden laptopXXL:block"> online store up and running. It
+            was<br class="mobile:hidden laptopXXL:block">
+            stunningly easy to use, with more<br class="mobile:hidden laptopXXL:block"> features and plug-ins that I
+            didn’t<br class="mobile:hidden laptopXXL:block"> even know
             I wanted.”
           </p>
-          <img src="img/logo-alicia-souza-large-140eb3cca92ad104d99d48e364aa08b2caaec5501922eeb3916546718de63152.png"
-            alt="">
-          <div>
-            <p>Alicia</p>
-            <p>Alicia Souza</p>
+          <div class="pt-14">
+            <img class="h-20"
+              src="img/logo-alicia-souza-large-140eb3cca92ad104d99d48e364aa08b2caaec5501922eeb3916546718de63152.png"
+              alt="">
+          </div>
+
+          <div class="flex laptop:text-2xl text-white  py-8">
+            <p class=" px-2 border-white border-r-2">Alicia</p>
+            <p class=" px-2">Alicia Souza</p>
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap items-center justify-center">
-        <img src="img/bajaao-large-90b80d8dca23c6010844c15073c5682e366e2a7cce83c3906023254ddc0f118f.png" alt="">
-        <img src="img/johnjacobs-large-64648953616375e0c0cdf42f66d2dac5d5d42c1fd73c36479bbfadde18215515.png" alt="">
-        <img src="img/kylie-large-cc52236a0d0155a055cdcb79674ed7d09e34dad57775fdacfcf5fe35a54573fe.png" alt="">
-        <img src="img/nush-large-700def69c5dedebecfbd66e65596eb777f090ed413fe4bade3f8547524c9b6c0.png" alt="">
-        <img src="img/yogabar-large-5e1859ae4c2493c4b21db6bd0029982f0ed35a632bdb24f9bacca6d553341986.png" alt="">
-        <img src="img/starstruck-large-f1878004d9a8b2965ddda61f9860c542fe63c6bbd4f9b9674894f4c34ecc05ae.png" alt="">
-        <img src="img/mcaffeine-large-58ebe816c20a443da0ce4d32256d4b1e48ec46cae26cb7a2b0f595ea91fdd795.png" alt="">
+      <div class="flex flex-wrap items-center justify-cenetr w-full justify-around pt-14 px-20">
+        <img class="h-10 py-2 "
+          src="img/bajaao-large-90b80d8dca23c6010844c15073c5682e366e2a7cce83c3906023254ddc0f118f.png" alt="">
+        <img class="h-10 pt-2 "
+          src="img/johnj pt-2 px-2acobs-large-64648953616375e0c0cdf42f66d2dac5d5d42c1fd73c36479bbfadde18215515.png"
+          alt="">
+        <img class="h-10" src="img/kylie-large-cc52236a0d0155a055cdcb79674ed7d09e34dad57775fdacfcf5fe35a54573fe.png"
+          alt="">
+        <img class="h-10 pt-2 px-2"
+          src="img/nush-large-700def69c5dedebecfbd66e65596eb777f090ed413fe4bade3f8547524c9b6c0.png" alt="">
+        <img class="h-10 pt-2 px-2"
+          src="img/yogabar-large-5e1859ae4c2493c4b21db6bd0029982f0ed35a632bdb24f9bacca6d553341986.png" alt="">
+        <img class="h-10 pt-2 px-2"
+          src="img/starstruck-large-f1878004d9a8b2965ddda61f9860c542fe63c6bbd4f9b9674894f4c34ecc05ae.png" alt="">
+        <img class="h-10 pt-2 px-2"
+          src="img/mcaffeine-large-58ebe816c20a443da0ce4d32256d4b1e48ec46cae26cb7a2b0f595ea91fdd795.png" alt="">
       </div>
     </section>
+
+    <!-- Get the help you need, every step of the way -->
+    <section class="bg-hero flex mobile:flex-col tabletX:flex-row  justify-between">
+      <div class="tabletX:w-1/2 flex mobile:flex-col tabletX-flex-row mobile:pl-6 tabletX:pl-20 pb-24 grow">
+        <div class="pt-24">
+          <h2
+            class="relative mobile:text-2xl mobile:font-medium tabletX:font-normal   tabletX:text-4xl tabletX:leading-12">
+            Get the help you need,<br> every step of the way</h2>
+        </div>
+        <div class="relative flex mobile:flex-col tabletX:flex-row   pt-14">
+          <div class="relative mobile:pr-0 tabletX:pr-10 ">
+            <h3 class="text-lg font-semibold">Shopify support</h3>
+            <p class=" text-paratext mobile:pt-2">Contact support 24/7, whether you’re<br
+                class="mobile:hidden tabletX:block">
+              troubleshooting issues or looking
+              for<br class="mobile:hidden tabletX:block">
+              business advice.
+            </p>
+            <p
+              class="pt-3 flex text-lg font-medium items-center text-btn after:content-['→'] after:text-3xl after:relative after:left-2 hover:after:left-4 w-fit">
+              Contact support
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">Shopify App Store</h3>
+            <p class=" text-paratext mobile:pt-2">
+              Add features and functionality to your<br class="mobile:hidden tabletX:block"> business with 6,000+ apps
+              that integrate<br class="mobile:hidden tabletX:block"> directly with
+              Shopify.
+
+            </p>
+            <p
+              class="pt-3 flex text-lg font-medium items-center text-btn after:content-['→'] after:text-3xl after:relative after:left-2 hover:after:left-4 w-fit ">
+              Visit the Shopify App Store
+            </p>
+          </div>
+        </div>
+        <div class="relative pt-12">
+          <h3 class="text-lg font-semibold">Shopify Expert Marketplace</h3>
+          <p class=" text-paratext mobile:pt-2">Hire a Shopify expert to help you with<br
+              class="mobile:hidden tabletX:block">
+            everything from strore steup to SEO
+          </p>
+          <p
+            class="pt-3 flex text-lg font-medium items-center text-btn after:content-['→'] after:text-3xl after:relative mobile:after:right-16 mobileX:after:left-2 hover:after:left-4 w-fit ">
+            Explore the Shopify Expert Marketplace
+          </p>
+        </div>
+      </div>
+      <div class="bg-red-200   relative  tabletX:w-1/3 laptop:w-1/2  mobile: laptopX:h-auto bg-center  mobile:bg-[url('img/help@desktop-2x-2929e8d420327b708cb9452bf940e92a426145bd07f88ad410db628513e571d4.jpg')]   mobile:bg-cover 
+        bg-no-repeat   ">
+
+      </div>
+    </section>
+
+    <!-- Start your business journey with Shopify -->
+    <section class="relative flex flex-col items-center justify-center pt-20 mobile:pb-10 tabletX:pb-36">
+      <h2 class="mobile:text-2xl laptop:text-3xl text-center">Start your business journey with Shopify</h2>
+      <p class="mobile:text-base laptop:text-lg text-paratext text-center pt-4 pb-6">Try Shopify for free, and explore
+        all
+        the tools and
+        services you
+        need
+        to start, run, and grow<br class="mobile:hidden laptop:block"> your business.
+      </p>
+      <button class="bg-btn px-6 py-3  rounded text-lg font-medium text-white">Start
+        free trial</button>
+      <p
+        class="mobile:relative mobile:pt-14 tabletX:absolute tabletX:bottom-6 tabletX:right-20 flex text-lg font-semibold items-center text-btn after:content-['→'] after:text-3xl after:relative hover:after:bottom-4 after:rotate-90 w-fit ">
+        Back to top
+      </p>
+    </section>
+
+    <!-- footer -->
+
+    <footer class="bg-darkgreen ">
+      <div class="mobile:px-8 tabletX:px-20 items-center">
+        <ul
+          class="flex gap-4 border-b border-footerline py-8 items-center mobile:justify-center tabletX:justify-start mobile:flex-wrap tabletX:flex-nowrap">
+          <li class="font-bold text-white">About</li>
+          <li class="font-bold text-white"> Careers</li>
+          <li class="font-bold text-white">Press and Media</li>
+          <li class="font-bold text-white">Shopify Plus</li>
+          <li class="font-bold text-white"> Sitemap</li>
+        </ul>
+      </div>
+
+      <div
+        class="flex justify-between  mobile:px-8 tabletX:px-20 pt-6 mobile:columns-2 pb-10 w-full mobile:flex-wrap tabletX:flex-nowrap">
+        <div class="flex justify-between mobile:flex-col tabletX:flex-row tabletX:gap-20">
+          <ul>
+            <li class="text-sm font-bold text-white">ONLINE STORE</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Sell
+              online
+            </li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">
+              Examples
+            </li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Website
+              builder</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Online
+              retail</li>
+          </ul>
+          <ul class="mobile:pt-0 tabletX:pt-5">
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Mobile
+              commerce</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Online
+              store
+              builder</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">
+              Dropshipping Business</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white"> Store
+              themes</li>
+          </ul>
+          <ul class="mobile:0 tabletX:pt-5">
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">
+              Ecommerce
+              website</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white"> Domain
+              names</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">
+              Shopping
+              cart</li>
+            <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">
+              Ecommerce
+              hosting</li>
+          </ul>>
+        </div>
+
+
+        <ul>
+          <li class="text-sm font-bold text-white">POINT OF SALE</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Point of
+            sale</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Feature
+          </li>
+        </ul>
+
+        <ul>
+          <li class="text-sm font-bold text-white">SUPPORT</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">24/7
+            support
+          </li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Shopify
+            Help
+            Center</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Shopify
+            Community</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">API
+            documentation</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Free
+            tools
+          </li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Free
+            stock
+            photos</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Website
+            for
+            sale</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Logo
+            Maker
+          </li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Business
+            name generator</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Research
+          </li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Legal
+          </li>
+        </ul>
+
+        <ul>
+          <li class="text-sm font-bold text-white">SHOPIFY</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Contact
+          </li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Partner
+            program</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Affiliate
+            program</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">App
+            developer</li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Investors
+          </li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Bolg
+            topics
+          </li>
+          <li class="text-sm pt-2 text-lightwhite transition-color ease-in-out duration-1000 hover:text-white">Community
+            Events</li>
+        </ul>
+      </div>
+
+
+      <div class="flex mobile:flex-col tabletX:flex-row items-center justify-between border-t border-footerline py-8">
+        <div class="flex items-center gap-6 tabletX:pl-20">
+          <i class="fa-brands fa-square-facebook text-2xl text-white bg-darkgreen"></i>
+          <i class="fa-brands fa-square-twitter text-2xl text-white bg-darkgreen"></i>
+          <i class="fa-brands fa-square-youtube text-2xl text-white bg-darkgreen"></i>
+          <i class="fa-brands fa-square-instagram text-2xl text-white bg-darkgreen"></i>
+          <i class="fa-brands fa-linkedin text-2xl text-white bg-darkgreen"></i>
+          <i class="fa-brands fa-square-pinterest text-2xl text-white bg-darkgreen"></i>
+        </div>
+        <div>
+          <ul class="flex items-center gap-4 mobile:pt-4 tabletX:pt-0 tabletX:pr-20 text-white">
+            <li>Terms of Service</li>
+            <li>Privacy Policy</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-globe"></i>India<i
+                class="fa-solid fa-sort-down"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </section>
+  <script>
+    var vid = document.getElementById("myVideo");
+
+    function playVid() {
+      vid.play();
+      document.getElementById("btn1").style.display = "none";
+      document.getElementById("btn2").style.display = "block";
+    }
+
+    function pauseVid() {
+      vid.pause();
+      document.getElementById("btn2").style.display = "none";
+      document.getElementById("btn1").style.display = "block";
+    } 
+  </script>
 </body>
 
 </html>
